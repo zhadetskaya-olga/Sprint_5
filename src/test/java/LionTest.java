@@ -33,7 +33,7 @@ class LionTest {
 
     @ParameterizedTest
     @MethodSource("lionSexProvider")
-    void lionConstructor_shouldSetManeCorrectly(String sex, boolean expectedHasMane) throws Exception {
+    void lionConstructorShouldSetManeCorrectly(String sex, boolean expectedHasMane) throws Exception {
         Lion lion = new Lion(sex, mockFeline);
         assertEquals(expectedHasMane, lion.hasMane());
     }
@@ -41,7 +41,7 @@ class LionTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"", "Кот", "123", "Male"})
-    void lionConstructor_shouldThrowExceptionForInvalidSex(String invalidSex) throws Exception {
+    void lionConstructorShouldThrowExceptionForInvalidSex(String invalidSex) throws Exception {
         Exception exception = assertThrows(Exception.class, () -> {
             new Lion(invalidSex, mockFeline);
         });
@@ -51,14 +51,14 @@ class LionTest {
     }
 
     @Test
-    void getKittens_shouldReturn1KittenWhenNoArgument() throws Exception {
+    void getKittensShouldReturn1KittenWhenNoArgument() throws Exception {
         Lion lion = new Lion("Самец", mockFeline);
         Mockito.when(mockFeline.getKittens(1)).thenReturn(1);
         Assertions.assertEquals(1, lion.getKittens());
 
     }
     @Test
-    void getKittens_shouldReturnKittensWhenArgument() throws Exception {
+    void getKittensShouldReturnKittensWhenArgument() throws Exception {
         Lion lion = new Lion("Самец", mockFeline);
         Mockito.when(mockFeline.getKittens(5)).thenReturn(5);
         Assertions.assertEquals(5, lion.getKittens(5));
@@ -66,7 +66,7 @@ class LionTest {
     }
 
     @Test
-    void getFood_shouldReturnMeat() throws Exception {
+    void getFoodShouldReturnMeat() throws Exception {
         Lion lion = new Lion("Самка", mockFeline);
         Mockito.when(mockFeline.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
         Assertions.assertEquals(List.of("Животные", "Птицы", "Рыба"), lion.getFood());
@@ -75,7 +75,7 @@ class LionTest {
 
 
     @Test
-    void getFood_shouldReturnExceptionWhenIncorrectWorkOfInvokedMethod() throws Exception {
+    void getFoodShouldReturnExceptionWhenIncorrectWorkOfInvokedMethod() throws Exception {
         Lion lion = new Lion("Самец", mockFeline);
         Exception exception = assertThrows(Exception.class, () -> {
             lion.getFood("Динозавр");

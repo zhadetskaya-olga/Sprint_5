@@ -22,13 +22,13 @@ public class CatTest {
     }
 
     @Test
-    void getSound_ShouldReturnMeow() {
+    void getSoundShouldReturnMeow() {
         assertEquals("Мяу", cat.getSound());
     }
 
 
     @Test
-    void getFood_shouldReturnMeat() throws Exception {
+    void getFoodShouldReturnMeat() throws Exception {
 
         Mockito.when(mockFeline.eatMeat()).thenReturn(List.of("Животные", "Птицы", "Рыба"));
         Assertions.assertEquals(List.of("Животные", "Птицы", "Рыба"), cat.getFood());

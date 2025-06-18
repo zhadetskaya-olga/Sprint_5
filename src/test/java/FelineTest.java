@@ -28,14 +28,14 @@ public class FelineTest {
     Feline feline_spy = new Feline();
 
     @Test
-    void eatMeat_shouldReturnMeatWhenFeline() throws Exception{
+    void eatMeatShouldReturnMeatWhenFeline() throws Exception{
         animal.getFood("Хищник");
         Assertions.assertEquals(List.of("Животные", "Птицы", "Рыба"), feline.eatMeat());
         Mockito.verify(animal, Mockito.times(1)).getFood("Хищник");
     }
 
     @Test
-    void getFamily_shouldReturnFelineFamily(){
+    void getFamilyShouldReturnFelineFamily(){
         Assertions.assertEquals("Кошачьи", feline.getFamily());
     }
 
@@ -45,12 +45,12 @@ public class FelineTest {
             "2",
             "1"
     })
-    void getKittens_ShouldReturnKittenCountWhenArguments(int args){
+    void getKittensShouldReturnKittenCountWhenArguments(int args){
         Assertions.assertEquals(feline.getKittens(args), args );
     }
 
     @Test
-    void getKittens_ShouldReturnKittenCount1WhenNoArguments(){
+    void getKittensShouldReturnKittenCount1WhenNoArguments(){
         feline_spy.getKittens(1);
         Assertions.assertEquals(feline.getKittens(), 1 );
     }
